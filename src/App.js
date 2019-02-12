@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
+  state = {
+    city: "",
+    cityList: [],
+  }
+
+  handleCityChange = (event) => {
+    const nextValue = event.target.value
+    this.setState({ city: nextValue })
+  }
+
+  handleButtonClick = () => {
+    const city = this.state.city
+    const cityList = this.state.cityList
+
+    this.setState({
+      city: '',
+      cityList: cityList.concat(city),
+    })
+  }
+
   render() {
+    const city = this.state.city
+    const cityList = this.state.cityList
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <input name="city" value={city} onChange={this.handleCityChange} />
+        <button onClick={this.handleButtonClick}>Add</button>
+
+        <ul>
+          {cityList.map(function (city) {
+            return <li>{city}</li>
+          })}
+        </ul>
       </div>
     );
   }
