@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import City from './City'
 
 class App extends Component {
   state = {
     city: "",
-    cityList: [],
+    cityList: ['London', 'Prague'],
   }
 
   handleCityChange = (event) => {
@@ -32,7 +33,7 @@ class App extends Component {
 
         <ul>
           {cityList.map(function (city) {
-            return <li>{city}</li>
+            return <City name={city} weather="sunny" degree={22} />
           })}
         </ul>
       </div>

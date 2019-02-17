@@ -1,0 +1,31 @@
+.city {
+    background-color: hsl(190,70%,45%);
+    color: #fff;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    margin: 20px;
+    display: block;
+    list-style: none;
+    text-align: center;
+}
+
+.city__title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.city__subtitle {
+    margin-top: 0;
+}
+
+.city__degree {
+    margin: 10px;
+    font-size: 4rem;
+    font-weight: 100;
+}
+
+.city__degree::after {
+    content: '°';
+}
