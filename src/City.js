@@ -2,9 +2,7 @@ import React from 'react';
 import './city.css'
 
 function City(props) {
-    const name = props.name
-    const weather = props.weather
-    const degree = props.degree
+    const { name, weather, degree } = props
 
     return (
         <li className="city">

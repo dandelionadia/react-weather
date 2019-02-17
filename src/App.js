@@ -13,8 +13,7 @@ class App extends Component {
   }
 
   handleButtonClick = () => {
-    const city = this.state.city
-    const cityList = this.state.cityList
+    const { city, cityList } = this.state
 
     this.setState({
       city: '',
@@ -23,8 +22,7 @@ class App extends Component {
   }
 
   render() {
-    const city = this.state.city
-    const cityList = this.state.cityList
+    const { city, cityList } = this.state
 
     return (
       <div>
@@ -33,7 +31,7 @@ class App extends Component {
 
         <ul>
           {cityList.map(function (city) {
-            return <City name={city} weather="sunny" degree={22} />
+            return <City name={city} weather="Sunny" degree={22} />
           })}
         </ul>
       </div>
