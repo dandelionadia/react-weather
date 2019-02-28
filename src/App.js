@@ -3,8 +3,8 @@ import City from './City'
 
 class App extends Component {
   state = {
-    city: "",
-    cityList: ['London', 'Prague'],
+    city: "London",
+    cityList: [],
   }
 
   handleCityChange = (event) => {
@@ -15,10 +15,23 @@ class App extends Component {
   handleButtonClick = () => {
     const { city, cityList } = this.state
 
-    this.setState({
-      city: '',
-      cityList: cityList.concat(city),
-    })
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=87b3e5827f5452c0ba3b3f34065d9c42`)
+      .then(function (res) {
+        return res.json()
+      })
+      .then((data) => {
+        console.log(data)
+
+        this.setState({
+          city: '',
+          cityList: cityList.concat({
+            name: data.name,
+            weather: data.weather[0].main,
+            degree: data.main.temp,
+            id: data.id
+          }),
+        })
+      })
   }
 
   render() {
@@ -31,7 +44,7 @@ class App extends Component {
 
         <ul>
           {cityList.map(function (city) {
-            return <City name={city} weather="Sunny" degree={22} />
+            return <City key={city.id} name={city.name} weather={city.weather} degree={city.degree} />
           })}
         </ul>
       </div>

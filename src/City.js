@@ -8,7 +8,7 @@ function City(props) {
         <li className="city">
             <p className="city__title">{name}</p>
             <p className="city__subtitle">{weather}</p>
-            <p class="city__degree">{degree}</p>
+            <p className="city__degree">{degree}</p>
         </li>
     )
 }
